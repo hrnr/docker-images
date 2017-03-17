@@ -1,0 +1,39 @@
+
+### my temp conf ###
+
+# prompt styling
+grml_theme_add_token spath '%40<..<%2~%<< ' '%B' '%b'
+zstyle ':prompt:grml:left:setup' items rc change-root host spath vcs percent
+zstyle ':prompt:grml:*:items:host' pre '%F{blue}'
+zstyle ':prompt:grml:*:items:host' post '%f'
+zstyle ':vcs_info:*' formats '%F{magenta}<%F{yellow}%b%F{magenta}>%m%u%c%f ' 'zsh: %r'
+zstyle ':vcs_info:*' check-for-changes true
+
+
+# colordiff wrapper
+diffc()
+{
+    diff -u $@ | colordiff | less -R
+}
+
+# massive xterm spawner
+xterm-spawn() # number
+{
+	for i in `seq $1`; do
+		xterm &
+	done
+}
+
+# ros env
+[ -r /opt/ros/*/setup.zsh ] && . /opt/ros/*/setup.zsh
+[ -r ~/ros/workspace/devel/setup.zsh ] && . ~/ros/workspace/devel/setup.zsh
+
+# autocompletion for catkin (currently bash only)
+autoload bashcompinit
+bashcompinit
+source /opt/ros/*/share/catkin/cmake/env-hooks/05.catkin_make.bash
+source /opt/ros/*/share/catkin/cmake/env-hooks/05.catkin_make_isolated.bash
+
+# fix for qt apps under docker
+export QT_X11_NO_MITSHM=1
+
