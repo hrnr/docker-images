@@ -1,13 +1,5 @@
 #!/bin/sh
 
-# 	--device /dev/snd \
-#	--device /dev/dri \
-#	--device /dev/usb \
-#	--device /dev/bus/usb \
-
-# xauth -f docker.Xauthority.hostname-specific generate :0 . untrusted
-
-
 docker run -it \
 	--user $(id -u) \
 	-v /etc/group:/etc/group:ro \
