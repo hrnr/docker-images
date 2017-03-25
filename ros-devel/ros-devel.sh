@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ros_latest=$(cat ros-latest)
+
 docker run -it \
 	--user $(id -u) \
 	-v /etc/group:/etc/group:ro \
@@ -20,5 +22,5 @@ docker run -it \
 	--name ros-devel \
 	-h ros-devel \
 	--rm=true \
-	hrnr/ros-devel
+	hrnr/ros-devel-${1:-$ros_latest}
 
