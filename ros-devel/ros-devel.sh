@@ -12,6 +12,8 @@ docker run -it \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=$DISPLAY \
 	-e XAUTHORITY=/home/$USER/.Xauthority \
+	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+	-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
 	-v /home/$USER/.ros_home:/home/$USER \
 	-v /home/$USER/robocup:/home/$USER/robocup \
 	-v /home/$USER/ros:/home/$USER/ros \
