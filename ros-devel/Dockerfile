@@ -5,7 +5,8 @@ ARG ros_version
 RUN apt update && apt install -y \
 	xterm \
 	zsh \
-	gdb
+	gdb \
+	openssh-client
 
 # additional ros packages
 RUN apt install -y \
