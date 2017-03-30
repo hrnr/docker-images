@@ -14,6 +14,11 @@ for extra_dir in $extra_dirs; do
 	fi
 done
 
+if [ -n "$SSH_AUTH_SOCK" ]; then
+	extra_opts="$extra_opts -v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK "
+	extra_opts="$extra_opts -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK "
+fi
+
 docker run -it \
 	--user $(id -u) \
 	-v /etc/group:/etc/group:ro \
@@ -24,8 +29,6 @@ docker run -it \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=$DISPLAY \
 	-e XAUTHORITY=$HOME/.Xauthority \
-	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
-	-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
 	-v $HOME/.ros_home:$HOME \
 	-v $HOME/.gitconfig:$HOME/.gitconfig:ro \
 	-v $ros_workspace:$ros_workspace \
