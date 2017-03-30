@@ -1,6 +1,18 @@
 #!/bin/sh
 
+default_workspace="$HOME/ros/workspace"
+default_extra_dirs="$HOME/robocup $HOME/ros"
+
 ros_latest=$(cat ros-latest)
+ros_workspace=${ROS_WORKSPACE:-$default_workspace}
+
+extra_opts=""
+extra_dirs=${ROS_EXTRA_DIRS:-$default_extra_dirs}
+for extra_dir in $extra_dirs; do
+	if [ -d $extra_dir ]; then
+		extra_opts="$extra_opts -v $extra_dir:$extra_dir "
+	fi
+done
 
 docker run -it \
 	--user $(id -u) \
@@ -11,18 +23,14 @@ docker run -it \
 	-v /etc/localtime:/etc/localtime:ro \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=$DISPLAY \
-	-e XAUTHORITY=/home/$USER/.Xauthority \
+	-e XAUTHORITY=$HOME/.Xauthority \
 	-v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
 	-e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
-	-v /home/$USER/.ros_home:/home/$USER \
-	-v /home/$USER/robocup:/home/$USER/robocup \
-	-v /home/$USER/ros:/home/$USER/ros \
-	-v /home/$USER/.zshrc:/home/$USER/.zshrc:ro \
-	-v /home/$USER/.gitconfig:/home/$USER/.gitconfig:ro \
-	--workdir=/home/$USER/ros/workspace \
-	--device /dev/video0 \
-	--name ros-devel \
+	-v $HOME/.ros_home:$HOME \
+	-v $HOME/.gitconfig:$HOME/.gitconfig:ro \
+	-v $ros_workspace:$ros_workspace \
+	$extra_opts \
+	--workdir=$ros_workspace \
 	-h ros-devel \
 	--rm=true \
-	hrnr/ros-devel-${1:-$ros_latest}
-
+	hrnr/ros-devel:${1:-$ros_latest}

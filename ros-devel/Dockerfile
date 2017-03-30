@@ -25,6 +25,6 @@ RUN apt install -y \
 RUN rm -rf /var/lib/apt/lists/*
 
 ADD zshrc.local /etc/zsh/zshrc.local
+ADD zshrc /etc/zsh/zshrc
 
 ENTRYPOINT ["zsh"]
-
