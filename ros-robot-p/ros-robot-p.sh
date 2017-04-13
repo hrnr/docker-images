@@ -35,8 +35,8 @@ docker run -it \
 	-v $HOME/.ros_home:$HOME \
 	-v $HOME/.gitconfig:$HOME/.gitconfig:ro \
 	-v $ros_workspace:$ros_workspace \
-	-v /dev/ttyUSB0 \
 	$extra_opts \
+	--device=/dev/ttyUSB0 \
 	--workdir=$ros_workspace \
 	-h ros-robot-p \
 	--rm=true \
