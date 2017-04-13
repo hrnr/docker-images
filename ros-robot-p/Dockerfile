@@ -7,6 +7,7 @@ RUN apt update && apt install -y \
 	ros-kinetic-ros-controllers \
 	ros-kinetic-rplidar-ros \
 	mc \
+	tmux \
 	clang
 
 # cleanup
