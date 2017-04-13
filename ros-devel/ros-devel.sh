@@ -19,8 +19,12 @@ if [ -n "$SSH_AUTH_SOCK" ]; then
 	extra_opts="$extra_opts -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK "
 fi
 
+if [ ! -d $HOME/.ros_home ]; then
+	mkdir $HOME/.ros_home
+fi
+
 docker run -it \
-	--user $(id -u) \
+	--user $(id -u):$(id -g) \
 	-v /etc/group:/etc/group:ro \
 	-v /etc/passwd:/etc/passwd:ro \
 	-v /etc/shadow:/etc/shadow:ro \

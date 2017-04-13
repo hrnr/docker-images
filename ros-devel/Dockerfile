@@ -6,7 +6,12 @@ RUN apt update && apt install -y \
 	xterm \
 	zsh \
 	gdb \
-	openssh-client
+	openssh-client \
+	vim \
+	less
+
+# block zsh new user startup
+RUN rm /usr/share/zsh/*/scripts/newuser
 
 # additional ros packages
 RUN apt install -y \
