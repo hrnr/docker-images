@@ -8,7 +8,8 @@ RUN apt update && apt install -y \
 	gdb \
 	openssh-client \
 	vim \
-	less
+	less \
+	tmux
 
 # block zsh new user startup
 RUN rm /usr/share/zsh/*/scripts/newuser
@@ -25,6 +26,8 @@ RUN apt install -y \
 	ros-${ros_version}-opencv3 \
 	ros-${ros_version}-map-server \
 	python-bloom
+# upgrade everything that is not updated in base docker image
+RUN apt upgrade -y
 
 # cleanup
 RUN rm -rf /var/lib/apt/lists/*
