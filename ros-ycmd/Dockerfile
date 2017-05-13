@@ -1,9 +1,9 @@
-FROM hrnr/ros-devel-kinetic
+FROM hrnr/ros-devel:kinetic
 
 #python libraries for building
 RUN apt update && apt install -y \
 	python3-dev python3-future
-# build ycmd
+# build ycmd from source to get the latest clang
 RUN git clone https://github.com/Valloric/ycmd && \
 	cd ycmd && \
 	git submodule update --init --recursive && \
