@@ -8,5 +8,5 @@ docker run -d \
 	-v /home/$USER/.config/ycmd:/etc/ycmd:ro \
 	-v /home/$USER:/home/$USER:ro \
 	--name ros-ycmd \
-	hrnr/ros-ycmd-${1:-$ros_latest}
+	hrnr/ros-ycmd
 
