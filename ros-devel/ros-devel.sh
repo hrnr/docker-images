@@ -35,6 +35,7 @@ docker run -it \
 	-e XAUTHORITY=$HOME/.Xauthority \
 	-v $HOME/.ros_home:$HOME \
 	-v $HOME/.gitconfig:$HOME/.gitconfig:ro \
+	-e ROSWORKSPACE=$ros_workspace \
 	-v $ros_workspace:$ros_workspace \
 	$extra_opts \
 	--workdir=$ros_workspace \

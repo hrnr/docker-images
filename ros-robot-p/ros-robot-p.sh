@@ -36,6 +36,7 @@ docker run -it \
 	-v $HOME/.Xauthority:$HOME/.Xauthority:ro \
 	-v $HOME/.ros_home:$HOME \
 	-v $HOME/.gitconfig:$HOME/.gitconfig:ro \
+	-e ROSWORKSPACE=$ros_workspace \
 	-v $ros_workspace:$ros_workspace \
 	$extra_opts \
 	--device=/dev/ttyUSB0 \

@@ -26,7 +26,7 @@ xterm-spawn() # number
 
 # ros env
 [ -r /opt/ros/*/setup.zsh ] && . /opt/ros/*/setup.zsh
-[ -r ~/ros/workspace/devel/setup.zsh ] && . ~/ros/workspace/devel/setup.zsh
+[ -r ${ROSWORKSPACE}/devel/setup.zsh ] && . ${ROSWORKSPACE}/devel/setup.zsh
 
 # autocompletion for catkin (currently bash only)
 autoload bashcompinit

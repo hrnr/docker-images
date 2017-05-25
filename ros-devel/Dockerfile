@@ -2,7 +2,8 @@ FROM osrf/ros:kinetic-desktop-full
 ARG ros_version
 
 # convenience utils
-RUN apt update && apt install -y \
+# upgrade everything that is not updated in base docker image
+RUN apt update && apt upgrade -y && apt install -y \
 	xterm \
 	zsh \
 	gdb \
@@ -25,9 +26,8 @@ RUN apt install -y \
 	ros-${ros_version}-hector-mapping \
 	ros-${ros_version}-opencv3 \
 	ros-${ros_version}-map-server \
+	ros-${ros_version}-gmapping \
 	python-bloom
-# upgrade everything that is not updated in base docker image
-RUN apt upgrade -y
 
 # cleanup
 RUN rm -rf /var/lib/apt/lists/*
