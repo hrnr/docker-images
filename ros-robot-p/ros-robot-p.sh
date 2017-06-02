@@ -24,6 +24,7 @@ fi
 
 docker run -it \
 	--user $(id -u):$(id -g) \
+	--group-add dialout \
 	-v /etc/group:/etc/group:ro \
 	-v /etc/passwd:/etc/passwd:ro \
 	-v /etc/shadow:/etc/shadow:ro \
