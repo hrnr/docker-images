@@ -40,6 +40,7 @@ docker run -it \
 	-v $ros_workspace:$ros_workspace \
 	$extra_opts \
 	--device=/dev/ttyUSB0 \
+	--device=/dev/ttyUSB1 \
 	--network=host \
 	--workdir=$ros_workspace \
 	-h ros-robot-p \
