@@ -8,7 +8,8 @@ docker run -d \
 	--user $(id -u):$(id -g) \
 	--group-add $(getent group audio | cut -d: -f3) \
 	--net host \
-	--memory 1024mb \
+	--memory 6g \
+	--memory-swap 6g \
 	-v /etc/group:/etc/group:ro \
 	-v /etc/passwd:/etc/passwd:ro \
 	-v /etc/localtime:/etc/localtime:ro \
