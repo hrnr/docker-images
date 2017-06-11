@@ -1,8 +1,9 @@
 #!/bin/sh
 
-if [ ! -p /tmp/qsurf.fifo ]; then
-	mkfifo /tmp/qsurf.fifo
+if [ -p /tmp/qsurf.fifo ]; then
+	rm /tmp/qsurf.fifo
 fi
+mkfifo /tmp/qsurf.fifo
 
 docker run -d \
 	--user $(id -u):$(id -g) \
