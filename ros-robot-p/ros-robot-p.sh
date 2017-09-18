@@ -4,9 +4,10 @@ default_workspace="$HOME/ros/workspace"
 default_extra_dirs="$HOME/robocup $HOME/ros"
 
 ros_workspace=${ROS_WORKSPACE:-$default_workspace}
+extra_dirs=${ROS_EXTRA_DIRS:-$default_extra_dirs}
+extra_devices="/dev/ttyUSB0 /dev/ttyUSB1"
 
 extra_opts=""
-extra_dirs=${ROS_EXTRA_DIRS:-$default_extra_dirs}
 for extra_dir in $extra_dirs; do
 	if [ -d $extra_dir ]; then
 		extra_opts="$extra_opts -v $extra_dir:$extra_dir "
@@ -21,6 +22,15 @@ fi
 if [ ! -d $HOME/.ros_home ]; then
 	mkdir $HOME/.ros_home
 fi
+
+for dev in $extra_devices; do
+	if [ -e $dev ]; then
+		extra_opts="--device=$dev "
+	else
+		echo "\e[31mrunning without ${dev}\e[0m"
+	fi
+done
+
 
 docker run -it \
 	--user $(id -u):$(id -g) \
@@ -40,8 +50,6 @@ docker run -it \
 	-e ROSWORKSPACE=$ros_workspace \
 	-v $ros_workspace:$ros_workspace \
 	$extra_opts \
-	--device=/dev/ttyUSB0 \
-	--device=/dev/ttyUSB1 \
 	-v /dev/serial:/dev/serial \
 	--network=host \
 	--workdir=$ros_workspace \
