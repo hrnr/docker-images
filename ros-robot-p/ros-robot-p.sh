@@ -27,7 +27,7 @@ for dev in $extra_devices; do
 	if [ -e $dev ]; then
 		extra_opts="--device=$dev "
 	else
-		echo "\e[31mrunning without ${dev}\e[0m"
+		echo -e "\e[31mrunning without ${dev}\e[0m"
 	fi
 done
 
