@@ -25,12 +25,13 @@ fi
 
 for dev in $extra_devices; do
 	if [ -e $dev ]; then
-		extra_opts="--device=$dev "
+		extra_opts="$extra_opts --device=$dev "
 	else
 		echo "!!! running without ${dev} !!!"
 	fi
 done
 
+echo "running with extra_opts: $extra_opts"
 
 docker run -it \
 	--user $(id -u):$(id -g) \
