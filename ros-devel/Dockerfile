@@ -17,13 +17,11 @@ RUN rm /usr/share/zsh/*/scripts/newuser
 
 # additional ros packages
 RUN apt install -y \
-	ros-${ros_version}-teleop-twist-keyboard \
 	ros-${ros_version}-tf2-bullet \
 	ros-${ros_version}-tf2-eigen \
 	ros-${ros_version}-robot-localization \
 	ros-${ros_version}-move-base \
 	ros-${ros_version}-perception \
-	ros-${ros_version}-hector-mapping \
 	ros-${ros_version}-opencv3 \
 	ros-${ros_version}-map-server \
 	ros-${ros_version}-gmapping \
