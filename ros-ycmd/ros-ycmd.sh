@@ -12,6 +12,7 @@ docker run -d \
 	-p 127.0.0.1:49549:49549 \
 	-v /home/$USER/.config/ycmd:/etc/ycmd:ro \
 	-v /home/$USER:/home/$USER:ro \
+	-e ROSWORKSPACE=$ros_workspace \
 	--name ros-ycmd \
 	--entrypoint="" \
 	hrnr/ros-devel:${ros_distro} \
