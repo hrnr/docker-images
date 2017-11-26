@@ -1,5 +1,5 @@
-FROM osrf/ros:kinetic-desktop-full
-ARG ros_version
+FROM osrf/ros:SRC-TAG
+ARG ros_distro
 
 # convenience utils
 # upgrade everything that is not updated in base docker image
@@ -17,14 +17,14 @@ RUN rm /usr/share/zsh/*/scripts/newuser
 
 # additional ros packages
 RUN apt install -y \
-	ros-${ros_version}-tf2-bullet \
-	ros-${ros_version}-tf2-eigen \
-	ros-${ros_version}-robot-localization \
-	ros-${ros_version}-move-base \
-	ros-${ros_version}-perception \
-	ros-${ros_version}-opencv3 \
-	ros-${ros_version}-map-server \
-	ros-${ros_version}-gmapping \
+	ros-${ros_distro}-tf2-bullet \
+	ros-${ros_distro}-tf2-eigen \
+	ros-${ros_distro}-robot-localization \
+	ros-${ros_distro}-move-base \
+	ros-${ros_distro}-perception \
+	ros-${ros_distro}-opencv3 \
+	ros-${ros_distro}-map-server \
+	ros-${ros_distro}-gmapping \
 	python-bloom
 
 # cleanup
