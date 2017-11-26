@@ -17,7 +17,7 @@ if [ "$response" != "y" ]; then
 	exit 1
 fi
 
-sed -e "s/SRC-TAG/${ros_distro}/" Dockerfile.in > Dockerfile
+sed -e "s/SRC-TAG/${src_tag}/" Dockerfile.in > Dockerfile
 
 docker build -t $image_name --build-arg ros_distro=${ros_distro} .
 
