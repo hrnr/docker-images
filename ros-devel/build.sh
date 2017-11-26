@@ -17,11 +17,8 @@ if [ "$response" != "y" ]; then
 	exit 1
 fi
 
-false
-
-cp Dockerfile Dockerfile.bkp
-sed -e "s/SRC-TAG/${ros_distro}/" Dockerfile.bkp > Dockerfile
+sed -e "s/SRC-TAG/${ros_distro}/" Dockerfile.in > Dockerfile
 
 docker build -t $image_name --build-arg ros_distro=${ros_distro} .
 
-mv Dockerfile.bkp Dockerfile
+rm Dockerfile
