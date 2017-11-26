@@ -25,6 +25,7 @@ RUN apt install -y \
 	ros-${ros_distro}-opencv3 \
 	ros-${ros_distro}-map-server \
 	ros-${ros_distro}-gmapping \
+	ros-${ros_distro}-rtabmap-ros \
 	python-bloom
 
 # cleanup
