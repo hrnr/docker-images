@@ -10,7 +10,8 @@ RUN apt update && apt upgrade -y && apt install -y \
 	openssh-client \
 	vim \
 	less \
-	tmux
+	tmux \
+	ycmd
 
 # block zsh new user startup
 RUN rm /usr/share/zsh/*/scripts/newuser
