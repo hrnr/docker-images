@@ -33,7 +33,3 @@ autoload bashcompinit
 bashcompinit
 source /opt/ros/*/share/catkin/cmake/env-hooks/05.catkin_make.bash
 source /opt/ros/*/share/catkin/cmake/env-hooks/05.catkin_make_isolated.bash
-
-# fix for qt apps under docker
-export QT_X11_NO_MITSHM=1
-
