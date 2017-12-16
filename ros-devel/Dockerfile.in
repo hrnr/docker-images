@@ -12,7 +12,11 @@ RUN apt update && apt upgrade -y && apt install -y \
 	vim \
 	less \
 	tmux \
-	ycmd
+	ycmd \
+	python3-pip
+
+# need to install this way because it is not released for debian
+RUN pip3 install catkin_lint
 
 # block zsh new user startup
 RUN rm /usr/share/zsh/*/scripts/newuser
