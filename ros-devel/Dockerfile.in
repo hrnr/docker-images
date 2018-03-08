@@ -13,10 +13,10 @@ RUN apt update && apt upgrade -y && apt install -y \
 	less \
 	tmux \
 	ycmd \
-	python3-pip
+	python-pip
 
 # need to install this way because it is not released for debian
-RUN pip3 install catkin_lint
+RUN pip install catkin_lint
 
 # block zsh new user startup
 RUN rm /usr/share/zsh/*/scripts/newuser
