@@ -1,4 +1,7 @@
 #!/bin/sh
+
+#usage: ./build.sh distro [docker_src_tag [docker_dst_tag]]
+
 set -e
 
 . ../ros-common/ros-common.sh

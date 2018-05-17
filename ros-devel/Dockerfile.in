@@ -21,20 +21,23 @@ RUN pip install catkin_lint
 # block zsh new user startup
 RUN rm /usr/share/zsh/*/scripts/newuser
 
-# additional ros packages
-RUN apt install -y \
+# additional ros packages, ignore packages that do not
+# exist in the distribution
+RUN for a in  \
 	ros-${ros_distro}-tf2-bullet \
 	ros-${ros_distro}-tf2-eigen \
+	ros-${ros_distro}-rosdoc-lite \
 	ros-${ros_distro}-robot-localization \
 	ros-${ros_distro}-move-base \
 	ros-${ros_distro}-perception \
 	ros-${ros_distro}-opencv3 \
 	ros-${ros_distro}-map-server \
 	ros-${ros_distro}-rtabmap-ros \
+	ros-${ros_distro}-gmapping \
+	ros-${ros_distro}-astra-launch \
 	pcl-tools \
-	python-bloom
-
-# currently broken pluginlib: ros-${ros_distro}-gmapping
+	python-bloom \
+	; do apt install -y $a; done
 
 # cleanup
 RUN rm -rf /var/lib/apt/lists/*
