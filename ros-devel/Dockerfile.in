@@ -13,10 +13,10 @@ RUN apt update && apt upgrade -y && apt install -y \
 	less \
 	tmux \
 	ycmd \
-	python-pip
+	python3-pip
 
 # need to install this way because it is not released for debian
-RUN pip install catkin_lint
+RUN pip3 install catkin_lint
 
 # block zsh new user startup
 RUN rm /usr/share/zsh/*/scripts/newuser
@@ -36,7 +36,7 @@ RUN for a in  \
 	ros-${ros_distro}-gmapping \
 	ros-${ros_distro}-astra-launch \
 	pcl-tools \
-	python-bloom \
+	python3-bloom \
 	; do apt install -y $a; done
 
 # cleanup

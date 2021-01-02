@@ -2,7 +2,7 @@
 
 # common launch life setting variables for derived scripts
 
-ros_distro=${1:-melodic}
+ros_distro=${1:-noetic}
 
 default_workspace="$HOME/ros/workspace-${ros_distro}"
 default_extra_dirs="$HOME/ros"
